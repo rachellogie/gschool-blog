@@ -17,8 +17,10 @@
   %body{class: page_classes}
     .row
       .twelve.columns
-        %h2
+        %h2{class: "blog_title"}
           %a{href: "/"}= data.site.title
+          %p= data.site.subtitle
+        %img{src: "/images/foundation/orbit/me.jpg"}
         %hr
     .row
       .eight.columns

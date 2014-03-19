@@ -249,3 +249,13 @@ footer.row {
   border-top: solid 1px #DDD;
   padding: 4em 0px;
 }
+
+.blog_title {
+    float: left;
+    color: black;
+}
+
+img {
+  float: right;
+}
+
