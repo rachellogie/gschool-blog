@@ -28,6 +28,6 @@ The pace at gSchool is intense. You have to get used to uncertainty and confusio
 and now are not good at things :)
 One gSchooler made me laugh by putting it this way: "We are getting the
 opportunity to polish some of our personality traits-- such as humility."
-I'm so excited to be taking this journey, and I'm looking forward to sharing the things I learn with you guys! 
+I'm so excited to be taking this journey, and I'm looking forward to sharing the things I learn with you guys!
 
 
