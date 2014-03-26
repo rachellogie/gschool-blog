@@ -4,7 +4,7 @@ xml.feed "xmlns" => "http://www.w3.org/2005/Atom" do
   xml.subtitle "One gSchool coding adventure, coming right up"
   xml.id "http://kodekitty.herokuapp.com/"
   xml.link "href" => "http://kodekitty.herokuapp.com/"
-  xml.link "href" => "http://kodekitty.herokuapp.comfeed.xml", "rel" => "self"
+  xml.link "href" => "http://kodekitty.herokuapp.com/feed.xml", "rel" => "self"
   xml.updated blog.articles.first.date.to_time.iso8601
   xml.author { xml.name "Rachel Logie" }
 
