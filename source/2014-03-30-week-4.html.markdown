@@ -1,0 +1,54 @@
+---
+title: Pair programming is extreme
+date: 2014-03-30 22:03 UTC
+tags: pair, extreme
+---
+
+Here at gSchool, we are pretty extreme. We are all extremely clever
+and extremely good looking. We also do pair programming, which
+is an extreme programming practice. Pair programming is pretty
+much what it sounds like: you pair up with another person, and
+you guys write code together. We start out by using our lovely
+random pair generator to assign pairs. I really like this idea,
+because you get to pair with people you wouldn't normally work
+with.
+
+We use Screenhero to share screens, so that both people don't
+have to be sharing a keyboard. You can both type on your own
+keyboard, but be sharing one person's screen. Screenhero is
+awesome like that. We also use git duet to make commits, so
+that one person gets the git cred and the other person signs
+off on it.
+
+Having a pair is cool for a few reasons. First of all, tossing
+around ideas with your pair is great to help get you unstuck.
+Your pair also has ideas and ways of doing things that you
+might not have thought of, so its great for learning different
+ways to do things. And personally, I found having a pair great
+to keep me on point, and remind me about things I was forgetting
+to do.
+
+Pairing can also be potentially tricky. What if you get someone
+who doesn't communicate well with you, or who refuses to listen
+to your ideas, or has a huge ego, or wants to type all the time
+and won't share the keyboard? I think pairing points out to us
+the things we need to work on. For me, I know I tend to want
+to drive most of the time, and I have a bit of a hard time
+relinquishing control of the keyboard. Wait, wait! I have an idea!
+No, seriously, this one is going to work! Structure can help with
+this, like one person writes a test, the next person makes it pass
+and writes the next test, and so on.
+
+Well, we will be pairing a ton at gSchool, and I am
+excited to work with everyone and improve my pairing skills
+over the next five months!
+
+
+
+<p>  Check out Screenhero if you haven't already...
+<img src="/images/foundation/orbit/screenhero.png" width=200px>
+</p>
+
+
+
+
