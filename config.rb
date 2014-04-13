@@ -35,6 +35,10 @@ activate :blog do |blog|
   # blog.page_link = "page/:num"
 end
 
+activate :disqus do |d|
+  d.shortname = "kodekitty"
+end
+
 # Per-page layout changes:
 #
 # With no layout
@@ -103,3 +107,4 @@ configure :build do
   # Or use a different image path
   # set :http_path, "/Content/images/"
 end
+
