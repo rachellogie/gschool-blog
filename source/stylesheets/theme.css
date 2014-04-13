@@ -251,11 +251,15 @@ footer.row {
 }
 
 .blog_title {
-    float: left;
-    color: black;
+  float: left;
+  color: black;
 }
 
 img {
   float: right;
+}
+
+.about {
+  font-style: normal;
 }
 

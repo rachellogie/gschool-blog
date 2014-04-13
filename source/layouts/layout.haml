@@ -28,7 +28,9 @@
       / Application Javascript, safe to override
       = javascript_include_tag "app"
       %aside.four.columns
-
+        %h6= data.site.about_me_header
+        %p{class: "about"}= data.site.about_me
+        %hr
         - if paginate
           .panel
             %p

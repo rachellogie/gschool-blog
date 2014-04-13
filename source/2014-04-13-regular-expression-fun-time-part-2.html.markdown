@@ -1,7 +1,7 @@
 ---
 title: Regular Expressions Fun Time! Part 2
 date: 2014-04-13 16:25 UTC
-tags:
+tags: regular expressions, ruby
 ---
 
 So last week we talked about regular expressions, and we did a little example
