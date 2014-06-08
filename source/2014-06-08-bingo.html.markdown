@@ -1,0 +1,98 @@
+---
+title: Bingo Bonanza
+date: 2014-06-08 16:38 UTC
+tags: Ruby, kata
+---
+
+It has been a while since my last blog post. I know all 3 of my readers must be very upset with me. Don't worry,
+I will
+make this one extra long and rambley to make up for it.
+
+The week after Boulder Startup Week I went to gluecon, which is a conference for developers that
+has lovely talks about APIs and devops.
+I learned valuable things, like what a beacon is (note: it has nothing to do with bacon, although
+maybe I could build something that uses a beacon in the kitchen so that whenever I walk into the kitchen
+a robot starts cooking me bacon. Off topic. Anyways). And then this past
+Tuesday night, we had a demo night, where we all presented our apps thus far. Well, not all of us, just
+the people who wanted to, and I was one of those people.  So I was in super crunch mode trying to
+make my app look good in time to demo.  I whipped it into shape just in time, and the presentation went
+well.  You can check out what it has morphed into at picky-eater.herokuapp.com. Oh, and also in the midst
+of all that, I was busy submitting a pull request to the Ruby docs and becoming an open source contributor :P
+
+So, anyways, all that is to say that I have been a little busy.  Today I wanted to take a little break
+from my app and work on some pure Ruby, so I dove into a bingo kata.  My goal was to build a program
+that simulates a bingo game.  I wanted to make a 5 by 5 board, with a free spot in the middle, and every
+time a number is called, it gets marked on the board. The idea was to see how many numbers need to be called
+before bingo is achieved.
+
+I started with the board.  What did I want it to look like? Well, the board needs to be a
+"five-by-five grid with
+five randomly-chosen numbers from 1 to 15 in the first column, from 16 to 30 in
+the second column, 31 to 45 in the third column, 46 to 60 in the fourth column,
+and 61 to 75 in the fifth column" with the center as a free space.
+
+I could do an array with 25 numbers in it, or
+I could do a 2-dimensional array so that each item in the outer array is actually a column. So it would
+look something like this:
+
+```
+[
+[5, 8, 11, 8, 8],
+[26, 16, 30, 23, 29],
+[44, 39, 0, 34, 43],
+[53, 60, 56, 56, 51],
+[61, 71, 73, 70, 63]
+]
+```
+I think this is a better design, not only so you can get a better visual representation of what is going
+on, but also since each column has its own specification about which random numbers it needs to contain, and so there
+is a logical grouping already.
+In the above array, each row is actually representing a column. (Turn it on its side?). The first element in the outer
+array is the first column, which contains random numbers 1-15, the second element is the second column which
+contains random numbers 16 to 30, and so on and so forth.
+
+But how would I test this?
+One challenge I ran into was how to test numbers that are being randomly generated.  I came up with the
+following test.  Basically it goes through each column, and checks that one of the numbers from that column
+is in the range it is supposed to be in. It also checks to make sure the middle space is 0.
+
+```
+  it "can make a board" do
+    board = Bingo.new.get_board
+    expect(board[2][2]).to eq 0
+    expect(1..15).to cover(board[0][1])
+    expect(16..30).to cover(board[1][1])
+    expect(31..45).to cover(board[2][1])
+    expect(46..60).to cover(board[3][1])
+    expect(61..75).to cover(board[4][1])
+  end
+```
+
+I decided to make the middle space 0, because there are never 0's on the board as real numbers. I decided
+that would be the number that marked a space as taken. So now I needed to randomly generate a number, call that
+number, see if it is on my board, and switch out the number for 0 if it is on the board. That would let me know
+that that spot's number has been called. Of course, as always, I wrote a test first.
+
+```
+  it "calls a number and zeroes out that number on the board" do
+    bingo = Bingo.new
+    board = bingo.get_board
+    num = board[3][2]
+    bingo.call_number(num)
+    board = bingo.get_board
+    expect(board[3][2]).to eq 0
+  end
+```
+For this test, I had to get the number out of the board at a specific spot, call that number, get the
+updated version of the board, and expect that specific spot to now be 0.  Otherwise, if I just called a random
+number, I couldn't be sure it was on the board, and I would have to do more work to find its position as well.
+
+Next I wanted to set up methods that would check when the board has bingo. In this program, that would
+mean when either an entire column, row, or diagonal is all 0's.  So I set up four methods: "check\_rows",
+"check\_columns", "check\_one\_diagonal", and "check\_other\_diagonal", which I think are pretty self-explanatory,
+and then I also set up one method "check\_if\_won" that calls these four methods to check if the board has won
+yet, and returns a boolean.
+
+Then all there was left to do was count how many random number calls it took to get bingo.
+I'm sure there are a million ways to do this, and this is just one way. If you have different
+ideas about how to do this, I would love to hear them!
