@@ -1,0 +1,54 @@
+---
+title: AWS S3
+date: 2014-07-01 22:06 UTC
+tags: Amazon Web Services, S3, static, hosting
+---
+
+So today I'm going to go over how to put up a static website using Amazon Web Service's S3. AWS has lots
+of different services, and they are all useful for different things. I'm assuming at this point that
+you have made your static site (HTML/CSS/JS) and have bought a domain name, and are ready to connect the
+two and see your site live online!
+
+S3 stands for Simple Storage Service. It is good for things like file/data storage and hosting static
+websites. It is fast and cheap. Amazon also has something called EC2, which stands for Elastic Compute
+Cloud. This is more like renting a computer-- it's actually a virtual machine. You have control of the
+operating system, so you can use whatever linux version you like. You can install a database onto your
+EC2 instance, or you can use Amazon's RDS. RDS is another service and it
+stands for Relational Database Service. They have MySQL,
+PostgreSQL, and some other ones. So EC2 would be useful for running your Ruby on Rails apps. You can do
+pretty much anything with EC2, but its just not as cost effective for some things.
+
+So all we have is a static site, so we are going to use S3. Where do we start? Well, Amazon provides us
+with a great tutorial at http://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html.
+I am going to go over the gist of it now.
+
+###Numero Uno
+
+First of all, you need to log in to the AWS S3 console. Here you are going to make two buckets. One will
+be the name of your domain, and one will be the name of your domain with www in front of it. I will use my
+site, [kodekitty.com](http://kodekitty.com/ "kodekitty"), as an example. So I would make two buckets, one called kodekitty.com, and one
+called www.kodekitty.com.  One bucket will have your files (kodekitty.com) and the other one will point to
+that bucket. So I would go ahead and upload all my website files to kodekitty.com. I would also add a
+bucket policy, which is covered in the tutorial. I would then configure the buckets. For kodekitty.com, I would
+select enable web hosting.  For www.kodekitty.com, I would select 'redirect all requests to another host name',
+which would be kodekitty.com.
+
+###Numero Dos
+
+Now let's deal with Amazon's Route 53, which is a DNS provider. Basically the important parts here are to
+create a CNAME and an ALIAS. Follow the tutorial.
+
+###Numero Tres
+
+Now you need to update the name server record. So I would go to GoDaddy and log in to my account, and
+under kodekitty.com I would click on the settings tab. I would then go to the section that says
+Nameservers. Click on manage, and then click on add nameserver (you might have to choose custom). Then
+copy and paste from your AWS Route 53 NS section, and add each one into your GoDaddy NS section.
+
+###Numero Cuatro
+
+Be patient. It might take a little while before your changes show up online.
+
+###Numero Cinco
+
+Congrats! You have a site online!!
